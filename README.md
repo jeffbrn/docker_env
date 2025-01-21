@@ -16,3 +16,7 @@ docker build -f Dockerfile_cpp_x86 -t dev_cpp_x86_img .
 docker tag dev_cpp_x86_img ghcr.io/jeffbrn/docker_env/dev_cpp_x86_img:latest
 docker push ghcr.io/jeffbrn/docker_env/dev_cpp_x86_img:latest
 ```
+
+## Local build containers
+
+For setting up a build system on a local machine see [here](./user/README.md)
