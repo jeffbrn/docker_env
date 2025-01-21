@@ -57,7 +57,7 @@ jobs:
                   context: ./files
                   file: ./files/Dockerfile_cpp_x86
                   push: true
-                  tags: dev_cpp_x86:1.0
+                  tags: ghcr.io/${{ github.repository_owner }}/dev_cpp_x86:1.0
                   labels: ${{ steps.meta.outputs.labels }}
 
             # This step generates an artifact attestation for the image, which is an unforgeable statement about where and how it was built. It increases supply chain security for people who consume the image. For more information, see [AUTOTITLE](/actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
