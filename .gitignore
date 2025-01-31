@@ -1,0 +1,4 @@
+# cross compile working files
+build/
+build/.config
+build/build.log

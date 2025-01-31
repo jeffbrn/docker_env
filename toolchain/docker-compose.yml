@@ -1,0 +1,16 @@
+services:
+    xtool-dev-env:
+        user: ${USER}
+        container_name: toolchain-builder
+        image: toolchain-builder_img
+        build:
+            context: .
+            dockerfile: Dockerfile_xtool
+            args:
+                USERNAME: ${USER}
+                ARG_UID: ${USER_UID}
+                ARG_GID: ${USER_GID}
+        network_mode: "host"
+        volumes:
+            - ./build:/build
+        command: tail -f /dev/null

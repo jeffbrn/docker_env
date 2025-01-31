@@ -1,0 +1,48 @@
+FROM ubuntu:24.04
+
+ARG USERNAME
+ARG ARG_UID
+ARG ARG_GID
+
+# fix for ubuntu stupidly creating a default user
+RUN touch /var/mail/ubuntu && chown ubuntu /var/mail/ubuntu && userdel -r ubuntu
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# install crosstool-ng dependencies
+RUN apt update && apt upgrade -y
+RUN apt install -y apt-utils
+RUN apt install -y autoconf automake bison bzip2 cmake
+RUN apt install -y flex
+RUN apt install -y g++
+RUN apt install -y gawk
+RUN apt install -y gcc
+RUN apt install -y gettext
+RUN apt install -y gperf
+RUN apt install -y help2man
+RUN apt install -y libncurses5-dev
+RUN apt install -y libstdc++6 libtool libtool-bin make patch
+RUN apt install -y rsync texinfo unzip wget xz-utils
+RUN apt update && apt upgrade -y
+RUN apt install -y git
+RUN apt install -y python3
+
+# build and install crosstool-ng
+WORKDIR /build
+# RUN git clone https://github.com/crosstool-ng/crosstool-ng.git
+# WORKDIR /build/crosstool-ng
+# RUN ./bootstrap
+# RUN ./configure --prefix=${PWD}
+# RUN make
+# RUN make install
+# RUN bin/ct-ng armv8-rpi4-linux-gnueabihf
+
+
+# Add host user to the container so that file permissions are correct
+RUN groupadd -o --gid $ARG_GID $USERNAME \
+    && useradd -l -s /bin/bash --uid $ARG_UID --gid $ARG_GID -m $USERNAME \
+    && mkdir -p /etc/sudoers.d \
+    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+    && chmod 0440 /etc/sudoers.d/$USERNAME
+
+USER $USERNAME
