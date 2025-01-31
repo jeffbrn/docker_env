@@ -1,0 +1,3 @@
+# build artifacts
+test/cpp/tst_x86
+test/cpp/tst_arm
