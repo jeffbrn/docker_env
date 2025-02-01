@@ -55,3 +55,11 @@ gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04)
 ### Executable Details ###
 cpp/tst_arm: ELF 64-bit LSB pie executable, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-aarch64.so.1, BuildID[sha1]=295fe7f47f10ceef234fc3512299d573795f0b85, for GNU/Linux 3.7.0, not stripped
 ```
+
+#### Running the ARM Test Executable
+
+```
+qemu-aarch64 cpp/tst_arm
+```
+
+If everything is OK you should see: Hello World!
