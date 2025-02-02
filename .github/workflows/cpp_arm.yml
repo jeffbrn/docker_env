@@ -55,7 +55,7 @@ jobs:
               with:
                   context: ./docker
                   file: ./docker/Dockerfile_cpp
-                  platform: linux/arm64
+                  platforms: linux/arm64
                   push: true
                   tags: |
                       ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:1.0
