@@ -54,8 +54,8 @@ jobs:
               id: push
               uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
               with:
-                  context: ./files
-                  file: ./files/Dockerfile_cpp_x86
+                  context: ./docker
+                  file: ./docker/Dockerfile_cpp
                   push: true
                   tags: |
                       ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:1.0
