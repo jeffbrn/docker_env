@@ -1,4 +1,4 @@
-FROM ubuntu:24.04 AS dev_base
+FROM ubuntu:24.04
 
 # fix for ubuntu stupidly creating a default user
 RUN touch /var/mail/ubuntu && chown ubuntu /var/mail/ubuntu && userdel -r ubuntu
@@ -10,3 +10,6 @@ RUN apt install -y apt-utils
 RUN apt install -y build-essential cmake gdb
 RUN apt install -y valgrind
 RUN apt install -y git
+
+# Check running architecture
+RUN dpkg --print-architecture
