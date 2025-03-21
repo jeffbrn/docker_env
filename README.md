@@ -20,3 +20,7 @@ docker push ghcr.io/jeffbrn/docker_env/dev_cpp_x86_img:latest
 ## Local build containers
 
 For setting up a build system on a local machine see [here](./user/README.md)
+
+## Running the image
+
+docker run --rm -it cpp-dev-x86_img /bin/bash

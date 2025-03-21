@@ -9,7 +9,15 @@ RUN apt update && apt upgrade -y
 RUN apt install -y apt-utils
 RUN apt install -y build-essential cmake gdb
 RUN apt install -y valgrind
-RUN apt install -y git
+RUN apt install -y git wget vim
+RUN apt install -y clang-tidy clang-format
+
+WORKDIR /build
+RUN wget https://github.com/oclint/oclint/releases/download/v24.11/oclint-24.11-llvm-16.0.4-x86_64-linux-ubuntu-24.04.tar.gz
+RUN tar -xvf oclint-*.tar.gz
+RUN mv oclint-*/ /opt/oclint
+RUN rm oclint-*.tar.gz
+ENV PATH="/opt/oclint/bin:${PATH}"
 
 # Check running architecture
 RUN dpkg --print-architecture
