@@ -45,8 +45,9 @@ RUN cmake -B build -S . \
 	-DBUILD_opencv_python2=OFF \
 	-DBUILD_opencv_java=OFF \
 	-DBUILD_opencv_apps=OFF
-RUN cd build && make && make install
-RUN lfconfig
+WORKDIR /install/opencv/build
+RUN make -j && make install
+RUN ldconfig
 
 WORKDIR /
 RUN rm -rf install
