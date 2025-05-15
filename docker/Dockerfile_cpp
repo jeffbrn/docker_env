@@ -25,6 +25,8 @@ RUN make && make install
 WORKDIR /install
 RUN wget https://github.com/google/googletest/archive/refs/tags/v1.13.0.tar.gz
 RUN tar -xzf v1.13.0.tar.gz
+WORKDIR /install/googletest-1.13.0
+RUN cmake -B build -S .
 WORKDIR /install/googletest-1.13.0/build
 RUN make && make install
 
