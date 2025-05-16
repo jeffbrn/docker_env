@@ -25,7 +25,7 @@ WORKDIR /
 RUN rm -rf install
 
 # Install gcovr
-RUN pip install gcovr
+# RUN pip install gcovr
 
 # Check running architecture
 RUN dpkg --print-architecture
