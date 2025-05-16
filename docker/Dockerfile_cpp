@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt upgrade -y
 RUN apt install -y apt-utils libssl-dev
 RUN apt install -y build-essential cmake gdb valgrind
-RUN apt install -y cppcheck python3-pip
+RUN apt install -y cppcheck python3-pip gcovr
 RUN apt install -y wget vim
 RUN apt install -y git clang clang-tidy clang-format
 
@@ -23,9 +23,6 @@ RUN make && make install
 
 WORKDIR /
 RUN rm -rf install
-
-# Install gcovr
-# RUN pip install gcovr
 
 # Check running architecture
 RUN dpkg --print-architecture
